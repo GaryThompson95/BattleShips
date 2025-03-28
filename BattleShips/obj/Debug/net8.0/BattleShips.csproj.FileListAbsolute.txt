@@ -1,0 +1,14 @@
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\bin\Debug\net8.0\BattleShips.exe
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\bin\Debug\net8.0\BattleShips.deps.json
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\bin\Debug\net8.0\BattleShips.runtimeconfig.json
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\bin\Debug\net8.0\BattleShips.dll
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\bin\Debug\net8.0\BattleShips.pdb
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\obj\Debug\net8.0\BattleShips.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\obj\Debug\net8.0\BattleShips.AssemblyInfoInputs.cache
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\obj\Debug\net8.0\BattleShips.AssemblyInfo.cs
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\obj\Debug\net8.0\BattleShips.csproj.CoreCompileInputs.cache
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\obj\Debug\net8.0\BattleShips.dll
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\obj\Debug\net8.0\refint\BattleShips.dll
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\obj\Debug\net8.0\BattleShips.pdb
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\obj\Debug\net8.0\BattleShips.genruntimeconfig.cache
+c:\Users\Gary\Desktop\GaryThompson_BattleShips\BattleShips\obj\Debug\net8.0\ref\BattleShips.dll
