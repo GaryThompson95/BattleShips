@@ -78,12 +78,11 @@
 
                     if(AreCoordinatesWithinBounds(proposedCoordinates) && AreCoordinatesFreeOfOtherShips(proposedCoordinates))
                     {
-                        ship.Coordinates = proposedCoordinates;
+                        ship.SetCoordinates(proposedCoordinates);
                         foreach(var coordinate in proposedCoordinates)
                         {
                             var selectedSpace = GameBoard[coordinate.Row, coordinate.Column];
-                            selectedSpace.ContainsShip = true;
-                            selectedSpace.ShipReference = ship;
+                            selectedSpace.SetShip(ship);
                         }
                         foundValidPlacement = true;
                     }
@@ -99,7 +98,7 @@
                 throw new ArgumentException("The coordinates given have already been hit in a previous strike");
             }
 
-            targetedSpace.IsHit = true;
+            targetedSpace.RegisterHit();
 
             if(targetedSpace.ContainsShip)
             {

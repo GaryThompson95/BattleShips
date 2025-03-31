@@ -88,7 +88,7 @@ namespace Battleship_Tests
                 new Coordinate(0, 2),
                 new Coordinate(0, 3)
             };
-            coordinates[0].ContainsShip = true;
+            coordinates[0].SetShip(new Ship("newShip", 3));
             // Act
             bool result = grid.AreCoordinatesFreeOfOtherShips(coordinates);
             // Assert
