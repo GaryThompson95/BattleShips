@@ -13,7 +13,6 @@ public class Programe
         {
             int gridSize = GetGridSizeFromUser();
             var enemyShips = GenerateEnemyShips(gridSize, out int battleShipCont, out int destroyerCount);
-
             var gameBoard = new GameGrid(gridSize);
             gameBoard.PlaceShipsRandomly(enemyShips);
 
@@ -28,12 +27,13 @@ public class Programe
     private static void EnterGameplayLoop(GameGrid gameBoard, int battleShipCont, int destroyerCount)
     {
         gameBoard.RenderGrid();
-        Console.WriteLine($"There are currently {battleShipCont} battleships and {destroyerCount} destroyers left");
+        Console.WriteLine($"There are currently {battleShipCont} battleship{(battleShipCont > 1 ? "s" : "")} and {destroyerCount} destroyer{(destroyerCount > 1 ? "s" : "")} left");
 
-        while (battleShipCont > 0 && destroyerCount > 0)
+        while (battleShipCont > 0 || destroyerCount > 0)
         {
             Console.WriteLine($"Ready to fire! Enter Coordinates to strike:");
             var newCoordinates = Console.ReadLine();
+            Console.Clear();
             Coordinate parsedCoordinates;
 
             try
@@ -79,12 +79,15 @@ public class Programe
             }
             catch(ArgumentException ex)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(ex.Message);
-                continue;
+                Console.ResetColor();
             }
 
+            //Extra writeline to give more space between output message and grid re-render
+            Console.WriteLine();
             gameBoard.RenderGrid();
-            Console.WriteLine($"There are currently {battleShipCont} battleships and {destroyerCount} destroyers left");
+            Console.WriteLine($"There are currently {battleShipCont} battleship{(battleShipCont > 1 ? "s" : "")} and {destroyerCount} destroyer{(destroyerCount > 1 ? "s" : "")} left");
         }
         Console.WriteLine("Congratulations you destroyed all enemy ships!");
     }
@@ -95,7 +98,7 @@ public class Programe
         var gridSizeInput = Console.ReadLine();
         int gridSizeInt = 10;
 
-        if (gridSizeInput != null)
+        if (!string.IsNullOrEmpty(gridSizeInput))
         {
             bool validGridSize = false;
             while (!validGridSize)
@@ -109,7 +112,7 @@ public class Programe
                     }
                     else
                     {
-                        Console.WriteLine($"Creating a playing field of {gridParsedInt}x{gridParsedInt}");
+                        gridSizeInt = gridParsedInt;
                         validGridSize = true;
                         continue;
                     }
@@ -123,9 +126,11 @@ public class Programe
                 gridSizeInput = Console.ReadLine();
             }
         }
+        Console.WriteLine($"Creating a playing field of {gridSizeInt}x{gridSizeInt}");
         return gridSizeInt;
     }
 
+    //Test dis
     private static List<Ship> GenerateEnemyShips(int gridSize, out int battleshipCount, out int destroyerCount)
     {
         List<Ship> generatedShips = new List<Ship>();
@@ -140,17 +145,20 @@ public class Programe
 
         while (numberOfEmemyShipSpaces > 0)
         {
-            if(numberOfEmemyShipSpaces >= 5)
+            //Added a check to ensure for every 1 batteship there are 2 destroyers
+            if (numberOfEmemyShipSpaces >= 5 && battleshipCount < (destroyerCount - 1))
             {
                 //Add BattleShip
                 battleshipCount++;
                 generatedShips.Add(new Ship($"BattleShip {battleshipCount}", 5));
+                numberOfEmemyShipSpaces -= 5;
             }
             else if(numberOfEmemyShipSpaces >= 4)
             {
                 //Add Destroyer
                 destroyerCount++;
-                generatedShips.Add(new Ship($"Destroyer {battleshipCount}", 4));
+                generatedShips.Add(new Ship($"Destroyer {destroyerCount}", 4));
+                numberOfEmemyShipSpaces -= 4;
             }
             else
             {
@@ -160,7 +168,7 @@ public class Programe
         return generatedShips;
     }
 
-    private static Coordinate ParseCoordinates(string input)
+    public static Coordinate ParseCoordinates(string input)
     {
         int firstDigitIndex = 0;
         while (firstDigitIndex < input.Length && char.IsLetter(input[firstDigitIndex]))

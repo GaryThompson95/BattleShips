@@ -1,6 +1,6 @@
 ﻿namespace BattleShips
 {
-    internal class Coordinate
+    public class Coordinate
     {
         public int Row, Column;
         public bool ContainsShip, IsHit;

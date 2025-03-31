@@ -1,6 +1,6 @@
 ﻿namespace BattleShips
 {
-    internal class Ship
+    public class Ship
     {
         public string Name;
         public int Size, HitCount;
