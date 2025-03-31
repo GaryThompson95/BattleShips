@@ -130,7 +130,6 @@ public class Programe
         return gridSizeInt;
     }
 
-    //Test dis
     private static List<Ship> GenerateEnemyShips(int gridSize, out int battleshipCount, out int destroyerCount)
     {
         List<Ship> generatedShips = new List<Ship>();

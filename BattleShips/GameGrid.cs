@@ -4,7 +4,7 @@
     {
         //2D Array of Coordinate to represent the Game Grid where the ships will be placed
         public Coordinate[,] GameBoard;
-        private readonly Random RandomNumberGenerator;
+        private readonly Random _randomNumberGenerator;
 
         public GameGrid(int gameBoardSize) 
         {
@@ -19,7 +19,7 @@
                 }
             }
 
-            RandomNumberGenerator = new Random();
+            _randomNumberGenerator = new Random();
         }
 
         public void RenderGrid()
@@ -71,9 +71,9 @@
                 bool foundValidPlacement = false;
                 while (!foundValidPlacement)
                 {
-                    var startingRow = RandomNumberGenerator.Next(0, GameBoard.GetLength(0) - 1);
-                    var startingColumn = RandomNumberGenerator.Next(0, GameBoard.GetLength(0) - 1);
-                    var direction = RandomNumberGenerator.Next(1, 4);
+                    var startingRow = _randomNumberGenerator.Next(0, GameBoard.GetLength(0) - 1);
+                    var startingColumn = _randomNumberGenerator.Next(0, GameBoard.GetLength(0) - 1);
+                    var direction = _randomNumberGenerator.Next(1, 4);
                     var proposedCoordinates = GenerateProposedCoordinates(startingRow, startingColumn, direction, ship.Size);
 
                     if(AreCoordinatesWithinBounds(proposedCoordinates) && AreCoordinatesFreeOfOtherShips(proposedCoordinates))
