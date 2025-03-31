@@ -3,7 +3,7 @@
     public class GameGrid
     {
         //2D Array of Coordinate to represent the Game Grid where the ships will be placed
-        public Coordinate[,] GameBoard;
+        public Coordinate[,] GameBoard { get; private set; }
         private readonly Random _randomNumberGenerator;
 
         public GameGrid(int gameBoardSize) 
